@@ -27,7 +27,7 @@ export default class MainMenu extends Phaser.Scene {
             volume: 0.5
         });
 
-        const title = this.add.text(400, 200, 'My Game', {
+        const title = this.add.text(400, 200, 'Bruce Maber Game', {
             fontSize: FONT_SIZES.TITLE,
             fill: TEXT_COLOR
         }).setOrigin(0.5);
