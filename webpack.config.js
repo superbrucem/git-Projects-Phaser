@@ -21,12 +21,9 @@ module.exports = {
     plugins: [
         new CopyWebpackPlugin({
             patterns: [
-                { 
+                {
                     from: 'public',
-                    to: '',
-                    globOptions: {
-                        ignore: ['**/index.html']
-                    }
+                    to: ''
                 },
                 { 
                     from: '_redirects', 
