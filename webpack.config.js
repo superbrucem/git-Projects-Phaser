@@ -7,6 +7,7 @@ module.exports = {
     output: {
         filename: 'bundle.js',
         path: path.resolve(__dirname, 'dist'),
+        publicPath: '/'
     },
     devServer: {
         static: {
@@ -54,6 +55,7 @@ module.exports = {
     },
     devtool: 'eval-source-map'
 };
+
 
 
 
