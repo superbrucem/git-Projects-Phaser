@@ -20,7 +20,11 @@ module.exports = {
     plugins: [
         new CopyWebpackPlugin({
             patterns: [
-                { from: '_redirects', to: '' }
+                { 
+                    from: '_redirects', 
+                    to: '', 
+                    noErrorOnMissing: true 
+                }
             ]
         })
     ],
@@ -43,4 +47,5 @@ module.exports = {
     },
     devtool: 'eval-source-map'
 };
+
 
