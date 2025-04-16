@@ -1,5 +1,12 @@
 import Phaser from 'phaser';
 
+const FONT_SIZES = {
+    TITLE: '64px',
+    MENU_ITEM: '32px'
+};
+
+const TEXT_COLOR = '#fff';
+
 export default class MainMenu extends Phaser.Scene {
     constructor() {
         super({ key: 'MainMenu' });
@@ -7,18 +14,18 @@ export default class MainMenu extends Phaser.Scene {
 
     create() {
         const title = this.add.text(400, 200, 'My Game', {
-            fontSize: '64px',
-            fill: '#fff'
+            fontSize: FONT_SIZES.TITLE,
+            fill: TEXT_COLOR
         }).setOrigin(0.5);
 
         const playButton = this.add.text(400, 300, 'Play', {
-            fontSize: '32px',
-            fill: '#fff'
+            fontSize: FONT_SIZES.MENU_ITEM,
+            fill: TEXT_COLOR
         }).setOrigin(0.5).setInteractive();
 
         const settingsButton = this.add.text(400, 350, 'Settings', {
-            fontSize: '32px',
-            fill: '#fff'
+            fontSize: FONT_SIZES.MENU_ITEM,
+            fill: TEXT_COLOR
         }).setOrigin(0.5).setInteractive();
 
         playButton.on('pointerdown', () => {
@@ -32,7 +39,7 @@ export default class MainMenu extends Phaser.Scene {
         // Add hover effect
         [playButton, settingsButton].forEach(button => {
             button.on('pointerover', () => button.setStyle({ fill: '#ff0' }));
-            button.on('pointerout', () => button.setStyle({ fill: '#fff' }));
+            button.on('pointerout', () => button.setStyle({ fill: TEXT_COLOR }));
         });
     }
 }
