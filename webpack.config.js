@@ -1,4 +1,5 @@
 const path = require('path');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     mode: 'development',
@@ -13,8 +14,16 @@ module.exports = {
         },
         compress: true,
         port: 8080,
-        hot: true
+        hot: true,
+        historyApiFallback: true
     },
+    plugins: [
+        new CopyWebpackPlugin({
+            patterns: [
+                { from: 'public/_redirects', to: '' }
+            ]
+        })
+    ],
     module: {
         rules: [
             {
