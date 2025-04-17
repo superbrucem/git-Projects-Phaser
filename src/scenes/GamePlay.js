@@ -1,11 +1,5 @@
 import Phaser from 'phaser';
-
-const FONT_SIZES = {
-    TITLE: '64px',
-    MENU_ITEM: '32px'
-};
-
-const TEXT_COLOR = '#fff';
+import { FONT_SIZES, TEXT_COLOR, SCREEN } from '../constants/globals';
 
 export default class GamePlay extends Phaser.Scene {
     constructor() {
@@ -21,10 +15,10 @@ export default class GamePlay extends Phaser.Scene {
         });
 
         // Add a player placeholder
-        const player = this.add.rectangle(400, 300, 50, 50, 0x00ff00);
+        const player = this.add.rectangle(SCREEN.CENTER_X, SCREEN.CENTER_Y, 50, 50, 0x00ff00);
         
         // Example game object that gives points when clicked
-        const target = this.add.circle(400, 200, 25, 0xff0000)
+        const target = this.add.circle(SCREEN.CENTER_X, 200, 25, 0xff0000)
             .setInteractive()
             .on('pointerdown', () => {
                 this.score += 10;
@@ -35,8 +29,8 @@ export default class GamePlay extends Phaser.Scene {
             });
 
         // Pause button
-        const pauseButton = this.add.text(700, 16, 'Pause', {
-            fontSize: '24px',
+        const pauseButton = this.add.text(SCREEN.CENTER_X * 2 - 100, 16, 'Pause', {
+            fontSize: FONT_SIZES.MENU_ITEM,
             fill: TEXT_COLOR
         }).setInteractive();
 

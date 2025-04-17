@@ -6,8 +6,8 @@ import GameOver from '../scenes/GameOver';
 
 const config = {
     type: Phaser.AUTO,
-    width: 800,
-    height: 600,
+    width: 1280,
+    height: 720,
     parent: 'game',
     backgroundColor: '#2d2d2d',
     scene: [MainMenu, GamePlay, Settings, GameOver]

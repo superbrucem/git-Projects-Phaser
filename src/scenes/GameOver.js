@@ -1,11 +1,5 @@
 import Phaser from 'phaser';
-
-const FONT_SIZES = {
-    TITLE: '64px',
-    MENU_ITEM: '32px'
-};
-
-const TEXT_COLOR = '#fff';
+import { FONT_SIZES, TEXT_COLOR, SCREEN } from '../constants/globals';
 
 export default class GameOver extends Phaser.Scene {
     constructor() {
@@ -13,22 +7,22 @@ export default class GameOver extends Phaser.Scene {
     }
 
     create(data) {
-        const gameOver = this.add.text(400, 200, 'Game Over', {
+        const gameOver = this.add.text(SCREEN.CENTER_X, 200, 'Game Over', {
             fontSize: FONT_SIZES.TITLE,
             fill: '#ff0000'
         }).setOrigin(0.5);
 
-        const score = this.add.text(400, 300, `Final Score: ${data.score}`, {
+        const score = this.add.text(SCREEN.CENTER_X, 300, `Final Score: ${data.score}`, {
             fontSize: FONT_SIZES.MENU_ITEM,
             fill: TEXT_COLOR
         }).setOrigin(0.5);
 
-        const playAgain = this.add.text(400, 400, 'Play Again', {
+        const playAgain = this.add.text(SCREEN.CENTER_X, 400, 'Play Again', {
             fontSize: FONT_SIZES.MENU_ITEM,
             fill: TEXT_COLOR
         }).setOrigin(0.5).setInteractive();
 
-        const mainMenu = this.add.text(400, 450, 'Main Menu', {
+        const mainMenu = this.add.text(SCREEN.CENTER_X, 450, 'Main Menu', {
             fontSize: FONT_SIZES.MENU_ITEM,
             fill: TEXT_COLOR
         }).setOrigin(0.5).setInteractive();

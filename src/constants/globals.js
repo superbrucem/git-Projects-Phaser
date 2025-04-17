@@ -8,3 +8,9 @@ export const FONT_SIZES = {
 };
 
 export const TEXT_COLOR = '#fff';
+
+// Add screen constants
+export const SCREEN = {
+    CENTER_X: 640,
+    CENTER_Y: 360
+};
