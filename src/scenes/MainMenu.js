@@ -12,10 +12,11 @@ export default class MainMenu extends Phaser.Scene {
             'assets/audio/gamestart.ogg'
         ]);
         
-        // Load your asset here - for example, a spaceship
-        this.load.image('star', 'assets/images/asteroid-big-0000.png.png');
-        this.load.image('ship', 'assets/images/playerShip1_orange.png');
-        this.load.image('bigstar', 'assets/images/meteorBrown_big1.png');
+        // Load white/bright star images
+        this.load.image('star', 'assets/images/star1.png');  
+        this.load.image('meteorsmall', 'assets/images/meteorGrey_small2.png');  
+        this.load.image('meteorbig', 'assets/images/meteorBrown_big1.png');  
+        this.load.image('ship', 'assets/images/playerShip2_orange.png');
     }
 
     create() {
@@ -35,11 +36,11 @@ export default class MainMenu extends Phaser.Scene {
                 stepX: Phaser.Math.Between(40, 100),
                 stepY: Phaser.Math.Between(20, 60)
             },
-            setScale: { x: 0.1, y: 0.1 }
+            setScale: { x: 0.5, y: 0.5 }  // Increased from 0.1 to 0.5
         });
 
         const mediumStars = this.add.group({
-            key: 'star',
+            key: 'meteorsmall',  // Changed from 'star' to 'meteorsmall'
             repeat: 30,
             setXY: {
                 x: 32,
@@ -47,11 +48,11 @@ export default class MainMenu extends Phaser.Scene {
                 stepX: Phaser.Math.Between(60, 120),
                 stepY: Phaser.Math.Between(40, 80)
             },
-            setScale: { x: 0.2, y: 0.2 }
+            setScale: { x: 0.8, y: 0.8 }  // Increased from 0.2 to 0.8
         });
 
         const bigStars = this.add.group({
-            key: 'bigstar',
+            key: 'meteorbig',
             repeat: 15,
             setXY: {
                 x: 48,
@@ -59,14 +60,17 @@ export default class MainMenu extends Phaser.Scene {
                 stepX: Phaser.Math.Between(100, 200),
                 stepY: Phaser.Math.Between(60, 100)
             },
-            setScale: { x: 0.3, y: 0.3 }
+            setScale: { x: 1.0, y: 1.0 }  // Increased from 0.3 to 1.0
         });
 
-        // Randomize star positions
+        // Add tint to make stars white/bright
         [smallStars, mediumStars, bigStars].forEach(group => {
             group.getChildren().forEach(star => {
                 star.x = Phaser.Math.Between(0, SCREEN.CENTER_X * 2);
                 star.y = Phaser.Math.Between(0, SCREEN.CENTER_Y * 2);
+                star.setTint(0xFFFFFF);  // Make stars white
+                // Optional: Add some alpha variation
+                star.setAlpha(Phaser.Math.FloatBetween(0.5, 1));
             });
         });
 
@@ -147,6 +151,37 @@ export default class MainMenu extends Phaser.Scene {
         [playButton, settingsButton].forEach(button => {
             button.on('pointerover', () => button.setStyle({ fill: '#ff0' }));
             button.on('pointerout', () => button.setStyle({ fill: TEXT_COLOR }));
+        });
+
+        // Add rotation to meteors
+        [mediumStars, bigStars].forEach(group => {
+            group.getChildren().forEach(meteor => {
+                meteor.x = Phaser.Math.Between(0, SCREEN.CENTER_X * 2);
+                meteor.y = Phaser.Math.Between(0, SCREEN.CENTER_Y * 2);
+                meteor.setTint(0xFFFFFF);
+                meteor.setAlpha(Phaser.Math.FloatBetween(0.5, 1));
+                // Add random initial rotation
+                meteor.rotation = Phaser.Math.FloatBetween(0, Math.PI * 2);
+                // Add random rotation speed
+                meteor.rotationSpeed = Phaser.Math.FloatBetween(-0.001, 0.001);
+            });
+        });
+
+        // Add rotation animations for meteors
+        this.tweens.add({
+            targets: mediumStars.getChildren(),
+            angle: 360,
+            duration: 15000,
+            repeat: -1,
+            ease: 'Linear'
+        });
+
+        this.tweens.add({
+            targets: bigStars.getChildren(),
+            angle: 360,
+            duration: 20000,
+            repeat: -1,
+            ease: 'Linear'
         });
     }
 }
