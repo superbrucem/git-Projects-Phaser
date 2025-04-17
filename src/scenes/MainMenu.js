@@ -25,7 +25,6 @@ export default class MainMenu extends Phaser.Scene {
         });
 
         this.cameras.main.setBackgroundColor('#000000');
-
         // Create three layers of stars for parallax effect
         const smallStars = this.add.group({
             key: 'star',
