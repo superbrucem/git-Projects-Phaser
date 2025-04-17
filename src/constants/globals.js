@@ -1,4 +1,4 @@
-export const GAME_TITLE = 'Bruce Maber Game';
+export const GAME_TITLE = 'Space Shooter';
 export const PLAY_TEXT = 'Play';
 export const SETTINGS_TEXT = 'Settings';
 
