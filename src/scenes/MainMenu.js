@@ -19,6 +19,11 @@ export default class MainMenu extends Phaser.Scene {
             volume: 0.5
         });
 
+        // Add background color - fixed version
+        this.cameras.main.setBackgroundColor('#3498db');
+        // Or alternatively:
+        // this.add.rectangle(0, 0, SCREEN.WIDTH * 2, SCREEN.HEIGHT * 2, 0x3498db).setOrigin(0);
+
         const title = this.add.text(SCREEN.CENTER_X, 200, GAME_TITLE, {
             fontSize: FONT_SIZES.TITLE,
             fill: TEXT_COLOR
