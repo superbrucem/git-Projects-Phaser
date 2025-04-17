@@ -1,11 +1,5 @@
 import Phaser from 'phaser';
-
-const FONT_SIZES = {
-    TITLE: '64px',
-    MENU_ITEM: '32px'
-};
-
-const TEXT_COLOR = '#fff';
+import { GAME_TITLE, PLAY_TEXT, SETTINGS_TEXT, FONT_SIZES, TEXT_COLOR } from '../constants/globals';
 
 export default class MainMenu extends Phaser.Scene {
     constructor() {
@@ -27,17 +21,17 @@ export default class MainMenu extends Phaser.Scene {
             volume: 0.5
         });
 
-        const title = this.add.text(400, 200, 'Bruce Maber Game', {
+        const title = this.add.text(400, 200, GAME_TITLE, {
             fontSize: FONT_SIZES.TITLE,
             fill: TEXT_COLOR
         }).setOrigin(0.5);
 
-        const playButton = this.add.text(400, 300, 'Play', {
+        const playButton = this.add.text(400, 300, PLAY_TEXT, {
             fontSize: FONT_SIZES.MENU_ITEM,
             fill: TEXT_COLOR
         }).setOrigin(0.5).setInteractive();
 
-        const settingsButton = this.add.text(400, 350, 'Settings', {
+        const settingsButton = this.add.text(400, 350, SETTINGS_TEXT, {
             fontSize: FONT_SIZES.MENU_ITEM,
             fill: TEXT_COLOR
         }).setOrigin(0.5).setInteractive();

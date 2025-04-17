@@ -1,1 +1,18 @@
 node_modules
+dist
+.env
+.DS_Store
+*.log
+coverage/
+build/
+.vscode/
+.idea/
+*.swp
+*.swo
+tmp/
+temp/
+
+# User-specific files
+~
+~/*
+.gitconfig
